@@ -1,0 +1,12 @@
+# User screenshots / temp images at root
+image.png
+image copy*.png
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Unused / backup photos
+photos/WhatsApp Image*
+photos/*.orig
