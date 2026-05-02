@@ -1022,10 +1022,10 @@
       <!-- ============ SPREAD 5: ARRIVÉE LECTEURS 4 et 5 — Apothéose comique | Photo placeholder à remplacer ============ -->
       <div class="right-page"
            data-cue="🚨🚨 SPREAD 5 - ARRIVÉE LECTEURS 4 et 5 !|Apothéose comique."
-           data-left-html='<div class="text-block"><div class="chapter-mark" style="color:#8b0000">Double interruption</div><h2>« On est là !<br>On a raté quoi ? »</h2><p>À la stupeur générale — c’est-à-dire à la stupeur de personne — les deux derniers compagnons firent leur entrée.</p><div class="ornament">🍷 ⏱ 🍷</div></div>'
+           data-left-html='<div class="text-block" style="justify-content:flex-start;padding-top:40px"><h2 style="margin-bottom:0.6rem">Où vous voyez-vous<br>dans 5 ans ?</h2><p style="font-size:clamp(0.9rem,1.25vw,1.15rem);margin-bottom:0.8rem">Parce qu’il vous reste encore tant d’étapes à vivre.</p><img src="photos/couple-halloween.jpg" class="inline-thumb" style="width:78%;max-width:440px;margin-top:0.8rem" alt=""></div>'
            data-left-pagenum="~ VIII ~">
         <div class="right-page-front">
-          <div class="photo-stage single"><div style="display:flex;align-items:center;justify-content:center;width:80%;height:80%;background:repeating-linear-gradient(45deg,#6b4a25,#6b4a25 10px,#4a2f15 10px,#4a2f15 20px);color:#f4e8d0;font-family:&apos;IM Fell English SC&apos;,serif;border-radius:3px;text-align:center;padding:20px">PHOTOS LECTEURS 4 et 5<br>(à venir)</div></div>
+          <div class="photo-stage single"><img src="photos/couple-trottinette-pont.jpg" alt=""></div>
           <div class="page-number">~ IX ~</div>
         </div>
         <div class="right-page-back"></div>
@@ -1084,38 +1084,7 @@
   }
 
   function playPageFlipSound() {
-    try {
-      const ctx = getAudioCtx();
-      const duration = 0.8;
-      const bufferSize = ctx.sampleRate * duration;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-
-      for (let i = 0; i < bufferSize; i++) {
-        const t = i / ctx.sampleRate;
-        const envelope = Math.sin(Math.PI * (t / duration)) ** 2;
-        const noise = (Math.random() * 2 - 1) * envelope;
-        const crinkle = Math.sin(t * 2000 + Math.random() * 10) * 0.1 * envelope;
-        data[i] = (noise * 0.3 + crinkle) * 0.6;
-      }
-
-      const source = ctx.createBufferSource();
-      source.buffer = buffer;
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'highpass';
-      filter.frequency.value = 800;
-
-      const gain = ctx.createGain();
-      gain.gain.value = 0.4;
-
-      source.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-      source.start();
-    } catch (e) {
-      // Silent fail
-    }
+    // Page-flip sound disabled
   }
 
   function updateLeftPage(pageIndex) {
